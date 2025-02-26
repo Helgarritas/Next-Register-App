@@ -15,6 +15,7 @@ export default {
 		a4: 'var(--amber-400)',
 		a7: 'var(--amber-700)',
 		r4: 'var(--red-400)',
+		r7: 'var(--red-700)',
   	  	background: 'hsl(var(--background))',
   	  	foreground: {
 		  DEFAULT: 'hsl(var(--foreground))',

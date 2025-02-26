@@ -4,7 +4,7 @@ import type * as React from "react"
 import {
   AudioWaveform,
   BookOpen,
-  Bot,
+  Users,
   Command,
   Frame,
   GalleryVerticalEnd,
@@ -63,9 +63,9 @@ const data = {
       ],
     },
     {
-      title: "Models",
+      title: "Staff",
       url: "#",
-      icon: Bot,
+      icon: Users,
       items: [
         {
           title: "Genesis",

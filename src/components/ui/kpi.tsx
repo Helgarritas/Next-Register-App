@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 interface KPIProps {  
   title: string;
-  value: string;
+  value: number;
   icon: ReactNode;
   classname?: string;
   color?: string;
@@ -14,7 +14,7 @@ export default function Kpi({title, value, icon, classname}: KPIProps) {
     <>
       <div className={`${classname} rounded-[10px] text-card-foreground border bg-card`}>
         <div className="p-6 pb-0 flex items-center justify-between">
-          <p className={`text-sm font-medium`}>{title}</p>
+          <p className={`text-sm font-medium`}>{title.toString()}</p>
           {icon}
         </div>
         <div className="p-6 pt-3">

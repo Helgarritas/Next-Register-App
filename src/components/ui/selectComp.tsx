@@ -1,5 +1,4 @@
-import * as React from "react"
-
+import * as React from "react";
 import {
   Select,
   SelectContent,
@@ -10,26 +9,48 @@ import {
 } from "@/components/ui/select";
 import { ChevronDown } from "lucide-react";
 
-interface Props {
-  selects: string[];
+/**
+ * Props del componente SelectComp
+ * @param handleSelect - Función que recibe el valor seleccionado como un número.
+ * @param selects - Array de números disponibles para seleccionar.
+ * @param defaultValue - Valor por defecto del select (opcional).
+ * @param placeholder - Placeholder del select cuando no hay valor seleccionado (opcional).
+ * @param className - Clases adicionales para el estilo del SelectTrigger (opcional).
+ */
+
+interface SelectCompProps {
+  handleSelect: (value: any) => void;
+  selects: number[] | string[];
+  defaultValue?: string;
   placeholder?: string;
-  className?: string
+  className?: string;
 }
 
-export function SelectComp({ selects, placeholder = "Select", className }: Props) {
+export function SelectComp({
+  handleSelect,
+  selects,
+  defaultValue = "Select",
+  placeholder = "Select",
+  className
+}: SelectCompProps) {
   return (
-    <Select>
-      <SelectTrigger className={`w-max ${className} text-foreground bg-transparent`}>
+    <Select
+      defaultValue={defaultValue}
+      onValueChange={(value: string) => handleSelect(value)}
+    >
+      <SelectTrigger className={`w-max ${className ?? ""} text-foreground bg-transparent`}>
         <SelectValue placeholder={placeholder} />
-        <ChevronDown className="w-4 h-4"/>
+        <ChevronDown className="w-4 h-4" />
       </SelectTrigger>
+
       <SelectContent>
         <SelectGroup>
-          {/* <SelectLabel>{init}</SelectLabel> */}
-          {selects.map((value: string, i) => (
-            <SelectItem key={i} value={value}>{value}</SelectItem>
+          {selects.map((value) => (
+            <SelectItem key={value} value={String(value)}>
+              {value}
+            </SelectItem>
           ))}
-        </SelectGroup>  
+        </SelectGroup>
       </SelectContent>
     </Select>
   )

@@ -1,4 +1,4 @@
-import { validateLogin } from "@/domain/utils/auth/validateLogin";
+import { validateLogin } from "@/domain/dto/auth/validateLogin";
 
 interface OptionsType {
   email: string;

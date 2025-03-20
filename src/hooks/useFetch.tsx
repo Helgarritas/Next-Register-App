@@ -1,13 +1,17 @@
-// src/hooks/useFetch.ts
+import { useState } from "react";
+// Utils
 import { envs } from "@/config/envs";
 
 type FetchOptions = {
   method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
-  headers?: Record<string, string>;
+  headers?: Record<string, string>; 
+  credentials?: string;
   body?: unknown;
 };
 
 export const useFetch = () => {
+  const [errors, setErrors] = useState();
+
   const fetchData = async (url: string, options: FetchOptions = {}): Promise<any | null> => {
     const { method = 'GET', headers = {}, body } = options;
 
@@ -19,7 +23,7 @@ export const useFetch = () => {
           ...headers,
         },
         body: body ? JSON.stringify(body) : undefined,
-      });
+      }); 
 
       if (!response.ok) {
         const errorMessage = await response.text();
@@ -33,6 +37,10 @@ export const useFetch = () => {
       return null;
     }
   };
+
+  const handleErrors = (erros: any) => {
+    setErrors(errors)
+  }
 
   return { fetchData };
 };

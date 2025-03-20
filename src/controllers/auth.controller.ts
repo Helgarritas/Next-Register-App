@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { LoginDto } from "@/domain/dto/auth/login.dto";
-import { AuthService } from "@/services/auth/authServices";
+import { AuthService } from "@/services/auth/auth.service";
 
 export class AuthController {
   constructor(public readonly authService: AuthService) {}

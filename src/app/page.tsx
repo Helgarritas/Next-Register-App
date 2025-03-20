@@ -1,20 +1,15 @@
 
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
+import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
 
-export default function Home() {
-    // const token = cookies().get('token')?.value;  
 
-  redirect('/login');
-  
-  // if (!token) {
-  // } else {
-  //     redirect('/dashboard');
-  // }
-  
+export default function Home() {  
   return (
     <>
-      
+      <LoginLink
+        postLoginRedirectURL="/dashboard"
+      >
+        Login
+      </LoginLink>
     </>
   );
 }
